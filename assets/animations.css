@@ -1,0 +1,113 @@
+.soar {
+	animation: soar 0.3s linear 1;
+	will-change: transform;
+}
+
+@keyframes soar {
+	0% {
+		opacity: 0;
+		transform: translateY(100px) scale(0.9);
+		animation-timing-function: linear;
+	}
+	60% {
+		opacity: 0.6;
+		transform: translateY(25px) scale(1.05);
+		animation-timing-function: ease-out;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px) scale(1);
+		animation-timing-function: ease-in-out;
+	}
+}
+
+
+.rotate-bf {
+	animation: rotate-bf 2s infinite;
+	will-change: transform;
+}
+
+@keyframes rotate-bf {
+	0% {
+		transform: rotateZ(0);
+	}
+	47.5% {
+		transform: rotateZ(0deg);
+	}
+	50% {
+		transform: rotateZ(-5deg);
+	}
+	55% {
+		transform: rotateZ(5deg);
+	}
+	60% {
+		transform: rotateZ(-2.5deg);
+	}
+	65% {
+		transform: rotateZ(2.5deg);
+	}
+	70% {
+		transform: rotateZ(-1.25deg);
+	}
+	75% {
+		transform: rotateZ(1.25deg);
+	}
+	77.5% {
+		transform: rotateZ(0deg);
+	}
+}
+
+
+.rotate-in-cw {
+	animation: rotate-in-cw 0.3s ease-out forwards;
+	will-change: transform;
+}
+
+@keyframes rotate-in-cw {
+	0% {
+		opacity: 0;
+		transform: rotateZ(-10deg);
+	}
+	100% {
+		opacity: 1;
+		transform: rotateZ(0deg);
+	}
+}
+
+
+.rotate-in-ccw {
+	animation: rotate-in-ccw 0.3s ease-out forwards;
+	will-change: transform;
+}
+
+@keyframes rotate-in-ccw {
+	0% {
+		opacity: 0;
+		transform: rotateZ(10deg);
+	}
+	100% {
+		opacity: 1;
+		transform: rotateZ(0deg);
+	}
+}
+
+
+.fade-in {
+	animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+.move-set .move-set-item {
+	animation-play-state: paused !important;
+	opacity: 0 !important;
+	will-change: opacity;
+}

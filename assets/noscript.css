@@ -1,0 +1,9 @@
+body:not(.user-is-tabbing) *:focus {
+  outline: none;
+}
+
+.move-set-item {
+	animation-delay: 500ms;
+	animation-play-state: running !important;
+	opacity: 1 !important;
+}

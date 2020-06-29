@@ -1,0 +1,24 @@
+@font-face {
+	font-family: ClearSans;
+	src: url(fonts/ClearSans-Regular.woff);
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: ClearSans;
+	src: url(fonts/ClearSans-Italic.woff);
+	font-style: italic;
+	font-weight: normal;
+}
+@font-face {
+	font-family: ClearSans;
+	src: url(fonts/ClearSans-Medium.woff);
+	font-style: normal;
+	font-weight: bold;
+}
+@font-face {
+	font-family: ClearSans;
+	src: url(fonts/ClearSans-MediumItalic.woff);
+	font-style: italic;
+	font-weight: bold;
+}
