@@ -3,7 +3,7 @@ body {
 	font-family:  ClearSans;
 	margin: 0;
 	overflow-x: hidden;
-	font-size: 14px;
+	font-size: 16px;
 	-webkit-text-size-adjust: 100%; /*iOS orientation changes won't change font size.*/
 }
 
@@ -28,7 +28,7 @@ nav, footer {
 	color: white;
 	padding: 0 32px 0 32px;
 	overflow: auto;
-	font-size: 11px;
+	font-size: 12px;
 }
 
 nav a, footer a {
@@ -62,13 +62,12 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
 }
 
 .intro-box {
-	max-width: 825px;
-	font-size: 16px;
+	max-width: 875px;
+	font-size: 18px;
 	margin: 64px auto 64px auto;
 	display: flex;
 	align-content:stretch;
 	background-color: rgba(255,255,255,1);
-	/*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.5);*/
 }
 
 @media only screen and (max-width: 899px) {
@@ -102,14 +101,14 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
 
 .intro-box > *:first-child:not(:only-child) {
 	float: left;
-	flex: 2;
+	flex: 2.25;
 	margin: 16px;
 	padding: 0;
 }
 
 .intro-box > *:not(:first-child) {	
 	flex: 5;
-	padding: 0 16px 0 8px;
+	padding: 0 12px 0 4px;
 }
 
 .intro-box img {
@@ -172,7 +171,7 @@ a.card {
 	max-width: 96px; /*For browsers that don't support fit-content*/
 	text-align: center;
 	padding: 0 12px 0 12px;
-	font-size: 11px;
+	font-size: 13px;
 	border-radius: 10px;
 	border: 1px solid #9a9a9a;
 	text-decoration: none;
@@ -207,10 +206,10 @@ a.card:hover .button {
 
 .drop-cap {
   float: left;
-  font-size: 47px;
-	line-height: 0.5;
-	margin-left: -2px;
-	margin-right: 2px;
+  font-size: 55px;
+	line-height: 0.55;
+	margin-left: -3px;
+	margin-right: 3px;
 	color: rgb(0, 120, 167);
 	transform: translateY(7px);
 }
@@ -224,7 +223,7 @@ footer {
 	max-width: 1036px;
 }
 
-@media only screen and (max-width: 749px) {
+@media only screen and (max-width: 799px) {
 	.footer-content {
 		padding: 48px 0 16px 0;
 		
@@ -235,7 +234,7 @@ footer {
 		text-align: center;
 	}
 }
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 800px) {
 	.footer-content {
 		display: flex;
 		justify-content: space-between;
@@ -244,12 +243,13 @@ footer {
 	}
 	
 	.footer-content > * {
-		max-width: 23%;
+		max-width: 25%;
 	}
 }
 
 .ligature img {
-	width: 110px;
+	width: 120px;
+	margin-top: -6px;
 	margin-bottom: 3px;
 }
 .ligature div {
@@ -258,7 +258,9 @@ footer {
 
 .email img {
 	width: 35px;
+	height: 24px;
 	margin-left: 1px;
+	margin-top: 4px;
 	margin-bottom: 12px;
 }
 
