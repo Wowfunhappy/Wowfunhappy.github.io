@@ -172,7 +172,7 @@ a.card {
 	max-width: 96px; /*For browsers that don't support fit-content*/
 	text-align: center;
 	padding: 0 12px 0 12px;
-	font-size: 13px;
+	font-size: 12px;
 	border-radius: 10px;
 	border: 1px solid #9a9a9a;
 	text-decoration: none;
