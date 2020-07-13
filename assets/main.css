@@ -64,7 +64,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
 }
 
 .intro-box {
-	max-width: 850px;
+	max-width: 855px;
 	font-size: 18px;
 	margin: 64px auto 64px auto;
 	display: flex;
