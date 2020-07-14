@@ -123,8 +123,13 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
 	padding: 0 16px 0 16px;
 }
 
+.columns .columns {
+	padding: 0;
+}
+
 .column {
 	flex: 1;
+	margin: 0 16px 0 16px;
 }
 
 @media only screen and (min-width: 650px) {
@@ -145,7 +150,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
 	color: black;
 	background-color: #fff;
 	padding:  16px;
-	margin: 16px;
+	margin: 16px 0 16px 0;
 	will-change: transform, box-shadow;
 	transition: transform 0.25s, box-shadow 0.25s;
 	animation: soar 0.3s linear 1;
