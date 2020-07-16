@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", function(){
 			main(); //ideal case--animations start when fonts have loaded.
 		});
 	}
-	catch(e) {
+	catch(e) { //browser doesn't support fonts.ready
 		main();
 	}
 	window.setTimeout(function() {
 		main(); //in case fonts take too long to load, start animations anyway.
-	}, 800)
+	}, 1000)
 });
 
 function main() {
@@ -21,7 +21,21 @@ function main() {
 	} else {
 		mainStarted = true;
 	}
-	
+	document.getElementsByTagName("BODY")[0].classList.add('fade-in');
+	if (document.getElementsByTagName("NAV").length > 0) {
+		console.log("has nav");
+		window.setTimeout(function() {
+			startMoveSets();
+		}, 100);
+	}
+	else {
+		console.log("no nav");
+		startMoveSets();
+	}
+}
+
+
+function startMoveSets() {
 	moveSets = Array.from(document.getElementsByClassName('move-set'));
 	moveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
@@ -32,21 +46,19 @@ function main() {
 			setMovedState(items, timeBetween, offset);
 		}, delay);
 	});
-	
-	function setMovedState(list, timeBetween, offset) {
-		if (list.length >= 1) {
-			var waypoint = new Waypoint({
-				element: list[0],
-				handler: function() {
-					this.element.classList.remove('move-set-item');
-					window.setTimeout(function() {
-						setMovedState(list, timeBetween, offset);
-					}, timeBetween);
-				},
-				offset: offset
-			})
-		}
-	}
 }
 
-
+function setMovedState(list, timeBetween, offset) {
+	if (list.length >= 1) {
+		var waypoint = new Waypoint({
+			element: list[0],
+			handler: function() {
+				this.element.classList.remove('move-set-item');
+				window.setTimeout(function() {
+					setMovedState(list, timeBetween, offset);
+				}, timeBetween);
+			},
+			offset: offset
+		})
+	}
+}

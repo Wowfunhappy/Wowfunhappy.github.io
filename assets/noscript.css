@@ -7,3 +7,7 @@ body:not(.user-is-tabbing) *:focus {
 	animation-play-state: running !important;
 	opacity: 1 !important;
 }
+
+body {
+	opacity: 1 !important;
+}

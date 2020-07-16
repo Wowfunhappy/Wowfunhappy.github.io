@@ -5,6 +5,7 @@ body {
 	margin: 0;
 	overflow-x: hidden;
 	font-size: 16px;
+	opacity: 0;
 	-webkit-text-size-adjust: 100%; /*iOS orientation changes won't change font size.*/
 }
 
