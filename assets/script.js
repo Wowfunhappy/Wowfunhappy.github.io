@@ -25,7 +25,7 @@ function main() {
 	if (document.getElementsByTagName("NAV").length > 0) {
 		window.setTimeout(function() {
 			startMoveSets();
-		}, 100);
+		}, 150);
 	}
 	else {
 		startMoveSets();
