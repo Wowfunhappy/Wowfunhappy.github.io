@@ -23,13 +23,11 @@ function main() {
 	}
 	document.getElementsByTagName("BODY")[0].classList.add('fade-in');
 	if (document.getElementsByTagName("NAV").length > 0) {
-		console.log("has nav");
 		window.setTimeout(function() {
 			startMoveSets();
 		}, 100);
 	}
 	else {
-		console.log("no nav");
 		startMoveSets();
 	}
 }
