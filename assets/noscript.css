@@ -2,12 +2,12 @@ body:not(.user-is-tabbing) *:focus {
   outline: none;
 }
 
-.move-set-item {
-	animation-delay: 500ms;
-	animation-play-state: running !important;
-	opacity: 1 !important;
+body {
+	animation: fade-in 0.3s ease-out forwards;
 }
 
-body {
-	opacity: 1 !important;
+.move-set .move-set-item {
+	animation-delay: 0.5s;
+	animation-play-state: running !important;
+	animation-fill-mode: forwards !important;
 }

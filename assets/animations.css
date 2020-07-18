@@ -1,5 +1,5 @@
 .soar {
-	animation: soar 0.3s linear 1;
+	animation: soar 0.3s linear;
 	will-change: transform;
 }
 
@@ -107,7 +107,7 @@
 
 
 .move-set .move-set-item {
-	animation-play-state: paused !important;
-	opacity: 0 !important;
+	animation-play-state: paused;
+	opacity: 0;
 	will-change: opacity;
 }
