@@ -10,17 +10,20 @@ document.addEventListener("DOMContentLoaded", function(){
 		main();
 	}
 	window.setTimeout(function() {
-		main(); //in case fonts take too long to load, start animations anyway.
+		main(); //fonts are taking too long, start animations anyway.
 	}, 1000)
 });
 
+
 function main() {
+	
 	/*Ensure main only starts once*/
 	if (mainStarted) {
 		return;
 	} else {
 		mainStarted = true;
 	}
+	
 	document.getElementsByTagName("BODY")[0].classList.add('fade-in');
 	if (document.getElementsByTagName("NAV").length > 0) {
 		window.setTimeout(function() {
@@ -34,7 +37,7 @@ function main() {
 
 
 function startMoveSets() {
-	moveSets = Array.from(document.getElementsByClassName('move-set'));
+	moveSets = Array.from(document.getElementsByClassName('move-set')); //Note: Add Array.from polyfill for best compatibility.
 	moveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
 		var timeBetween = moveSet.dataset.timeBetween || 200;
