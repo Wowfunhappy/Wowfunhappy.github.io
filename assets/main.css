@@ -305,3 +305,10 @@ footer {
 .privacy-policy {
 	hyphens: auto;
 }
+
+.back-to-homepage {
+	will-change: transform;
+}
+.footer-content:hover .back-to-homepage:not(:hover) {
+	animation: rotate-bf 2s infinite;
+}
