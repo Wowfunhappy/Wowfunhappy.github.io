@@ -247,7 +247,9 @@ a.card:hover .button {
 	margin-left: -3px;
 	margin-right: 3px;
 	color: rgb(0, 120, 167);
-	transform: translateY(7px);
+	position: relative;
+	top: 7px;
+	animation: rotate-in-ccw 0.3s ease-out forwards;
 }
 
 footer {
