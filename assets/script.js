@@ -62,14 +62,7 @@ function setMovedState(list, timeBetween) {
 				}, timeBetween);
 			},
 			offset: function() {
-				var thresholdFloat = parseFloat(threshold) / 100.0;
-				console.log(thresholdFloat);
-				
-				//Adjustment for elements whose initial position on page is lower due to unplayed animation.
-				if (this.element.classList.contains('card') || this.element.classList.contains('soar')) {
-					//extraOffset = extraOffset - 100;
-				}
-				
+				var thresholdFloat = parseFloat(threshold) / 100.0;				
 				return this.context.innerHeight() - extraOffset - (this.element.offsetHeight * thresholdFloat);
 			}
 		})
