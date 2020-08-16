@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function(){
 	window.setTimeout(function() {
 		main(); //fonts are taking too long, start animations anyway.
 	}, 1000)
+	
+	handleTouches();
 });
 
 
@@ -66,5 +68,19 @@ function setMovedState(list, timeBetween) {
 				return this.context.innerHeight() - extraOffset - (this.element.offsetHeight * thresholdFloat);
 			}
 		})
+	}
+}
+
+function handleTouches() {
+	var cards = document.getElementsByClassName("card");
+	for (var i = 0; i < cards.length; i++) {
+		cards[i].addEventListener("touchstart", function(e) {
+			this.classList.add("touchDown");
+			this.classList.remove("touchUp");
+		});
+		cards[i].addEventListener("touchend", function (e) {
+			this.classList.add("touchUp");
+			this.classList.remove("touchDown");
+		});
 	}
 }
