@@ -7,8 +7,5 @@ body {
 }
 
 .move-set .move-set-item, .move-set .move-set-item .move-set-subItem {
-	animation-delay: 0.5s;
-	opacity: 0;
-	will-change: opacity;
-	animation-fill-mode: forwards;
+	opacity: 1;
 }
