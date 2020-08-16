@@ -8,6 +8,7 @@ body {
 
 .move-set .move-set-item {
 	animation-delay: 0.5s;
-	animation-play-state: running !important;
-	animation-fill-mode: forwards !important;
+	opacity: 0;
+	will-change: opacity;
+	animation-fill-mode: forwards;
 }

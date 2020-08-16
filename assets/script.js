@@ -1,6 +1,7 @@
 var mainStarted = false;
 
 document.addEventListener("DOMContentLoaded", function(){
+	document.body.classList.add("has-js")
 	try {
 		document.fonts.ready.then(function() {
 			main(); //ideal case--animations start when fonts have loaded.
@@ -41,25 +42,36 @@ function startMoveSets() {
 	moveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
 		var timeBetween = moveSet.dataset.timeBetween || 200;
-		var offset = moveSet.dataset.offset || '100%';
 		var items = moveSet.getElementsByClassName("move-set-item");
 		window.setTimeout(function() {
-			setMovedState(items, timeBetween, offset);
+			setMovedState(items, timeBetween);
 		}, delay);
 	});
 }
 
-function setMovedState(list, timeBetween, offset) {
+function setMovedState(list, timeBetween) {
 	if (list.length >= 1) {
+		var threshold = list[0].dataset.onScreenThreshold || '50%'; //Animation will play when this % of element is on screen.
+		var extraOffset = parseInt(list[0].dataset.onScreenOffset) || 0; //Extra amount user must scroll (in px) before animation plays.
 		var waypoint = new Waypoint({
 			element: list[0],
 			handler: function() {
 				this.element.classList.remove('move-set-item');
 				window.setTimeout(function() {
-					setMovedState(list, timeBetween, offset);
+					setMovedState(list, timeBetween);
 				}, timeBetween);
 			},
-			offset: offset
+			offset: function() {
+				var thresholdFloat = parseFloat(threshold) / 100.0;
+				console.log(thresholdFloat);
+				
+				//Adjustment for elements whose initial position on page is lower due to unplayed animation.
+				if (this.element.classList.contains('card') || this.element.classList.contains('soar')) {
+					//extraOffset = extraOffset - 100;
+				}
+				
+				return this.context.innerHeight() - extraOffset - (this.element.offsetHeight * thresholdFloat);
+			}
 		})
 	}
 }

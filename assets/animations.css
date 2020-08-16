@@ -106,8 +106,8 @@
 }
 
 
-.move-set .move-set-item {
-	animation-play-state: paused;
+.has-js .move-set .move-set-item {
+	animation: none;
 	opacity: 0;
 	will-change: opacity;
 }
