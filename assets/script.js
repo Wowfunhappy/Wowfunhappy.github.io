@@ -82,5 +82,9 @@ function handleTouches() {
 			this.classList.add("touchUp");
 			this.classList.remove("touchDown");
 		});
+		cards[i].addEventListener("click", function (e) {
+			//Keep card depressed if tapped
+			this.classList.remove("touchUp");
+		});
 	}
 }
