@@ -106,7 +106,7 @@
 }
 
 
-.has-js .move-set .move-set-item {
+.has-js .move-set .move-set-item, .has-js .move-set .move-set-item .move-set-subItem {
 	animation: none;
 	opacity: 0;
 	will-change: opacity;

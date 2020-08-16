@@ -6,7 +6,7 @@ body {
 	animation: fade-in 0.3s ease-out forwards;
 }
 
-.move-set .move-set-item {
+.move-set .move-set-item, .move-set .move-set-item .move-set-subItem {
 	animation-delay: 0.5s;
 	opacity: 0;
 	will-change: opacity;
