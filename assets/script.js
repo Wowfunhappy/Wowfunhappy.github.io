@@ -64,8 +64,10 @@ function setMovedState(list, timeBetween) {
 				}, timeBetween);
 			},
 			offset: function() {
-				var thresholdFloat = parseFloat(threshold) / 100.0;				
-				return this.context.innerHeight() - extraOffset - (this.element.offsetHeight * thresholdFloat);
+				var thresholdFloat = parseFloat(threshold) / 100.0;
+				var offset = this.context.innerHeight() - extraOffset - (this.element.offsetHeight * thresholdFloat);
+				//Never allow offset to occur less than 150px below top of viewport.
+				return Math.max(offset, 150);
 			}
 		})
 	}
