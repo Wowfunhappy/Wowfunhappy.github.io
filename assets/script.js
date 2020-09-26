@@ -40,37 +40,68 @@ function main() {
 
 
 function startMoveSets() {
-	moveSets = Array.from(document.getElementsByClassName('move-set')); //Note: Add Array.from polyfill for best compatibility.
-	moveSets.forEach(function(moveSet) {
+	//Note: Add Array.from polyfill for best compatibility.
+	
+	//In a patient move set, individual items will not appear until they enter the viewport
+	patientMoveSets = Array.from(document.getElementsByClassName('patient-move-set')); 
+	patientMoveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
 		var timeBetween = moveSet.dataset.timeBetween || 200;
 		var items = moveSet.getElementsByClassName("move-set-item");
 		window.setTimeout(function() {
-			setMovedState(items, timeBetween);
+			patientSetMovedState(items, timeBetween);
+		}, delay);
+	});
+	
+	//As soon as a hasty move set enters the viewport, items will begin appearing even if offscreen.
+	hastyMoveSets = Array.from(document.getElementsByClassName('hasty-move-set'));
+	hastyMoveSets.forEach(function(moveSet) {
+		var delay = moveSet.dataset.initialDelay || 0;
+		var timeBetween = moveSet.dataset.timeBetween || 200;
+		var items = moveSet.getElementsByClassName("move-set-item");
+		window.setTimeout(function() {
+			var waypoint = new Waypoint({
+				element: moveSet,
+				handler: function() {
+					hastySetMovedState(items, timeBetween);
+				},
+				offset: function() { return calculateOffset(this); }
+			})
 		}, delay);
 	});
 }
 
-function setMovedState(list, timeBetween) {
+function patientSetMovedState(list, timeBetween) {
 	if (list.length >= 1) {
-		var threshold = list[0].dataset.onScreenThreshold || '50%'; //Animation will play when this % of element is on screen.
-		var extraOffset = parseInt(list[0].dataset.onScreenOffset) || 0; //Extra amount user must scroll (in px) before animation plays.
 		var waypoint = new Waypoint({
 			element: list[0],
 			handler: function() {
 				this.element.classList.remove('move-set-item');
 				window.setTimeout(function() {
-					setMovedState(list, timeBetween);
+					patientSetMovedState(list, timeBetween);
 				}, timeBetween);
 			},
-			offset: function() {
-				var thresholdFloat = parseFloat(threshold) / 100.0;
-				var offset = this.context.innerHeight() - extraOffset - (this.element.offsetHeight * thresholdFloat);
-				//Never allow offset to occur less than 150px below top of viewport.
-				return Math.max(offset, 150);
-			}
+			offset: function() { return calculateOffset(this); }
 		})
 	}
+}
+
+function hastySetMovedState(list, timeBetween) {
+	if (list.length >= 1) {
+		list[0].classList.remove('move-set-item');
+		window.setTimeout(function() {
+			hastySetMovedState(list, timeBetween);
+		}, timeBetween);
+	}
+}
+
+function calculateOffset(item) {
+	var threshold = item.element.dataset.onScreenThreshold || '50%'; //Animation will play when this % of element is on screen.
+	var extraOffset = parseInt(item.element.dataset.onScreenOffset) || 0 //Extra amount user must scroll (in px) before animation plays.
+	var thresholdFloat = parseFloat(threshold) / 100.0;
+	var offset = item.context.innerHeight() - extraOffset - (item.element.offsetHeight * thresholdFloat);
+	//Never allow offset to occur less than 150px below top of viewport.
+	return Math.max(offset, 150);
 }
 
 function handleTouches() {

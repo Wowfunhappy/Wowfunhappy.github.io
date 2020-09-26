@@ -6,6 +6,6 @@ body {
 	animation: fade-in 0.3s ease-out forwards;
 }
 
-.move-set .move-set-item, .move-set .move-set-item .move-set-subItem {
+.patient-move-set.move-set-item, .patient-move-set.move-set-item .move-set-subItem {
 	opacity: 1;
 }
