@@ -1,4 +1,5 @@
 var mainStarted = false;
+var bottomOfPageHasBeenSeen = false;
 
 document.addEventListener("DOMContentLoaded", function(){
 	document.body.classList.add("has-js")
@@ -38,7 +39,6 @@ function main() {
 	}
 }
 
-
 function startMoveSets() {
 	//Note: Add Array.from polyfill for best compatibility.
 	
@@ -64,11 +64,26 @@ function startMoveSets() {
 				element: moveSet,
 				handler: function() {
 					hastySetMovedState(items, timeBetween);
+					console.log("setMoveState " + items[0]);
 				},
 				offset: function() { return calculateOffset(this); }
-			})
+			});
 		}, delay);
 	});
+	
+	//If user has reached end of screen and can't scroll further, need to trigger all animations.
+	//See also: calculateOffset function checks for bottomOfPageHasBeenSeen.
+	if (! bottomOfPageHasBeenSeen) {
+		var waypoint = new Waypoint({
+			element: document.body,
+			handler: function() {
+				bottomOfPageHasBeenSeen = true;
+				Waypoint.destroyAll()
+				startMoveSets();
+			},
+			offset: 'bottom-in-view'
+		});
+	}
 }
 
 function patientSetMovedState(list, timeBetween) {
@@ -88,6 +103,7 @@ function patientSetMovedState(list, timeBetween) {
 
 function hastySetMovedState(list, timeBetween) {
 	if (list.length >= 1) {
+		console.log("removing class: " + list[0]);
 		list[0].classList.remove('move-set-item');
 		window.setTimeout(function() {
 			hastySetMovedState(list, timeBetween);
@@ -96,12 +112,27 @@ function hastySetMovedState(list, timeBetween) {
 }
 
 function calculateOffset(item) {
-	var threshold = item.element.dataset.onScreenThreshold || '50%'; //Animation will play when this % of element is on screen.
-	var extraOffset = parseInt(item.element.dataset.onScreenOffset) || 0 //Extra amount user must scroll (in px) before animation plays.
-	var thresholdFloat = parseFloat(threshold) / 100.0;
-	var offset = item.context.innerHeight() - extraOffset - (item.element.offsetHeight * thresholdFloat);
-	//Never allow offset to occur less than 150px below top of viewport.
-	return Math.max(offset, 150);
+
+	if (bottomOfPageHasBeenSeen) {
+		return Waypoint.viewportHeight();
+	}
+
+	//data-position-threshold: Animation will play when top of element has travelled up this % the viewport height.
+	var positionThreshold = item.element.dataset.positionThreshold;
+	if (positionThreshold) {
+		var thresholdFloat = parseFloat(positionThreshold) / 100.0;
+		return Waypoint.viewportHeight() * (1 - thresholdFloat);
+	}
+	else {
+		//data-on-screen-threshold: Animation will play when this % of element is on screen.
+		var onScreenthreshold = item.element.dataset.onScreenThreshold || '50%';
+		//An extra amount user must scroll (in px) beyond on-screen-threshold, before animation plays. Ignored if on-screen-threshold is not set!
+		var extraOffset = parseInt(item.element.dataset.onScreenOffset) || 0
+		var thresholdFloat = parseFloat(onScreenthreshold) / 100.0;
+		var offset = item.context.innerHeight() - extraOffset - (item.element.offsetHeight * thresholdFloat);
+		//Never allow offset to occur less than 150px below top of viewport.
+		return Math.max(offset, 150);
+	}
 }
 
 function handleTouches() {
