@@ -77,9 +77,12 @@ function startMoveSets() {
 		var waypoint = new Waypoint({
 			element: document.body,
 			handler: function() {
-				bottomOfPageHasBeenSeen = true;
-				Waypoint.destroyAll()
-				startMoveSets();
+				window.setTimeout(function() {
+				//I don't entirely understand why wrapping this in a setTimeout is necessary; however, it fixes problems on short pages, most notably 404. Presumably the Waypoint logic fails if it's interrupted too early in the process. ~40ms seems to be enough, but more was added to be safe.
+					bottomOfPageHasBeenSeen = true;
+					Waypoint.destroyAll()
+					startMoveSets();
+				}, 100);
 			},
 			offset: 'bottom-in-view'
 		});
@@ -103,7 +106,6 @@ function patientSetMovedState(list, timeBetween) {
 
 function hastySetMovedState(list, timeBetween) {
 	if (list.length >= 1) {
-		console.log("removing class: " + list[0]);
 		list[0].classList.remove('move-set-item');
 		window.setTimeout(function() {
 			hastySetMovedState(list, timeBetween);
