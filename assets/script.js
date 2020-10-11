@@ -64,7 +64,6 @@ function startMoveSets() {
 				element: moveSet,
 				handler: function() {
 					hastySetMovedState(items, timeBetween);
-					console.log("setMoveState " + items[0]);
 				},
 				offset: function() { return calculateOffset(this); }
 			});

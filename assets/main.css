@@ -217,7 +217,7 @@ a.card {
 	box-shadow:inset 0 1px 0 rgba(255,255,255,1), 0 1px 0 rgba(0,0,0,0.09);
 }
 
-a.card:not(.touchUp):hover, a.card:active, a.card.touchDown {
+a.card:not(.touchUp):not(.move-set-item):hover, a.card:active, a.card.touchDown {
 	transform: scale(0.98);
 	box-shadow: 0 2px 10px 0 rgba(0,0,0,0.25);
 }
