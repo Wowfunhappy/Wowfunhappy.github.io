@@ -2,7 +2,6 @@ var mainStarted = false;
 var bottomOfPageHasBeenSeen = false;
 
 document.addEventListener("DOMContentLoaded", function(){
-	document.body.classList.add("has-js")
 	try {
 		document.fonts.ready.then(function() {
 			main(); //ideal case--animations start when fonts have loaded.
