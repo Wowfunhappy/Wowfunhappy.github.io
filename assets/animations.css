@@ -106,7 +106,7 @@
 }
 
 
-.patient-move-set .move-set-item, .hasty-move-set .move-set-item, .patient-move-set .move-set-item .move-set-subItem {
+.patient-move-set .move-set-item, .hasty-move-set .move-set-item {
 	animation: none;
 	opacity: 0;
 	will-change: opacity;
