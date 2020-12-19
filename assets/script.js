@@ -78,7 +78,7 @@ function startMoveSets() {
 				window.setTimeout(function() {
 				//I don't entirely understand why wrapping this in a setTimeout is necessary; however, it fixes problems on short pages, most notably 404. Presumably the Waypoint logic fails if it's interrupted too early in the process. ~40ms seems to be enough, but more was added to be safe.
 					bottomOfPageHasBeenSeen = true;
-					Waypoint.destroyAll()
+					Waypoint.destroyAll();
 					startMoveSets();
 				}, 100);
 			},
