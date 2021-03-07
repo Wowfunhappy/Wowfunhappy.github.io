@@ -27,6 +27,10 @@
 	font-display: block;
 }
 
+.move-set-item {
+	display: block;
+}
+
 body {
 	background-color: rgb(245,245,247);	
 	font-family:  ClearSans, sans-serif;
@@ -260,10 +264,6 @@ a.card:not(.touchUp):hover .button {
 	color: rgb(0, 120, 167);
 	position: relative;
 	top: 7px;
-}
-
-.move-set-item {
-	display: block;
 }
 
 footer {
