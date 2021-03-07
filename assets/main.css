@@ -166,6 +166,11 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
 	margin: 0 16px 0 16px;
 }
 
+@media only screen and (max-width: 649px) {
+	.desktop-only {
+		display: none;
+	}
+}
 @media only screen and (min-width: 650px) {
 	.columns {
 		display: flex;
