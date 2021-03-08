@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jonathan’s Mac HTTPS Proxy | Jonathan’s Nifty Website</title>
+	<link rel="preload" as="font" href="assets/fonts/ClearSans-Regular.woff" type="font/woff2" crossorigin="anonymous">
+	<link rel="preload" as="font" href="assets/fonts/ClearSans-Italic.woff" type="font/woff2" crossorigin="anonymous">
+	<link rel="preload" as="font" href="assets/fonts/ClearSans-Medium.woff" type="font/woff2" crossorigin="anonymous">
+	<link rel="preload" as="font" href="assets/fonts/ClearSans-MediumItalic.woff" type="font/woff2" crossorigin="anonymous">
+	<link type="text/css" rel="stylesheet" href="assets/main.css">
+	<link type="text/css" rel="stylesheet" href="assets/animations.css">
+	<noscript><link type="text/css" rel="stylesheet" href="assets/noscript.css"></noscript>
+	<script type="text/javascript" charset="utf-8" src="assets/vendor.js"></script>
+	<script type="text/javascript" charset="utf-8" src="assets/script.js"></script>
+	<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fd5e3c30716144efa53e3dcbec13ede3"}'></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<nav>
+		<p><a href="./">← Back to homepage</a></p>
+	</nav>
+
+	<div class="page-container">
+	
+		<header class="patient-move-set" data-time-between="150" data-initial-delay="0">
+			<h1 class="move-set-item rotate-in-ccw">An HTTPS Proxy installer for old versions of Mac OS X</h1>
+			<!--<p class="move-set-item fade-in">Subtitle</p>-->
+		</header>
+		
+		<div class="columns">
+			<div class="column patient-move-set" data-time-between="75" data-initial-delay="300">
+				<p><span class="drop-cap move-set-item rotate-in-ccw">I</span><span class="move-set-item fade-in"> happen to love older versions of Mac OS X. Mavericks is, in my humble opinion, still the best operating system in existence, and Snow Leopard and Tiger also have their charms.</p>
+				<p class="move-set-item fade-in">But one place where older Mac operating systems fall short nowadays is in their HTTPS support. For example, since fall 2020, any Mavericks user who uses the Dictionary app to search Wikipedia will be told the server is unavailable. Wikipedia isn't down, of course, but it no longer supports any of the HTTPS ciphers which Mavericks can understand.</p>
+				<p class="move-set-item fade-in">To fix this problem, you need a proxy server—a "man in the middle" which intercepts and fixes traffic before sending it on its way. I decided to go with <a href="http://www.squid-cache.org/" target="_blank">Squid</a>, because it's lightweight, open source, battle-tested, and Mac-compatible. Use the below installer to set up a pre-configured version on your own PPC or Intel Mac running OS X 10.5 Leopard or newer. The proxy will run locally, so no unencrypted data should ever leave your machine.</p>
+				<p class="move-set-item fade-in">Issues this proxy is known to fix include:</p>
+				<ul class="move-set-item fade-in">
+					<li>Searching Wikipedia in the Dictionary app.</li>
+					<li>Loading remote images in Apple Mail.</li>
+					<li>Syncing with Junecloud in Delivery Status.</li>
+					<li>Adding feeds in NetNewsWire.</li>
+					<li>Connecting to GitLab in Tower.</li>
+					<li>Playing live streams in QuickTime.</li>
+				</ul>
+				<p class="move-set-item fade-in"><em>...and much more!</p>
+			</div>
+		</div>
+		
+		<div class="columns">
+			<div class="column patient-move-set" data-time-between="75" data-initial-delay="300">
+				<div class="columns patient-move-set" data-time-between="50" data-initial-delay="350" data-on-screen-threshold="100%">
+					<div class="column">
+						<a class="card narrow soar move-set-item" href="downloads/jonathan-mac-https-proxy.dmg" download>
+							<h3>Download Jonathan’s Mac HTTPS Proxy</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="columns">
+			<div class="column patient-move-set" data-time-between="75" data-initial-delay="300">	
+				<div class="columns">
+					<div class="column" data-time-between="75" data-initial-delay="500" data-on-screen-threshold="200%">
+						<p class="move-set-item fade-in" data-on-screen-threshold="150%"><small>Please do not use this proxy to browse the web in ancient insecure versions of Safari. Use <a href="downloads/chromium-legacy-downloader.zip" target="_blank">Chromium Legacy</a>, <a href="https://randommacstuff.blogspot.com/p/interweb-browser.html" target="_blank">InterWeb</a>, or <a href="https://www.floodgap.com/software/tenfourfox/" target="_blank">TenFourFox</a> instead.</small></p>
+						<p class="move-set-item fade-in" data-on-screen-threshold="150%"><small>I have done my best to configure this proxy in a secure manner. It uses a root certificate generated locally at install time to be unique to your machine, and only allows connections from localhost by default. It is my sincere belief that this proxy will increase the security of old machines by giving them access to newer ciphers and protocols—but I am not a network security professional, and I cannot commit to updating this package in a timely manner. Use at your own risk.</small></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<footer>
+		<div class="footer-content">
+			<div class="ligature">
+				<img src="assets/images/ligature.png">
+				<div>Designed &amp; developed<br>
+				by <strong>Jonathan Alland</strong></div>
+			</div>
+			
+			<div class="email">
+				<div><img src="assets/images/mail.svg"></div>
+				<strong>PERSONAL</strong><br>wowfunhappy • gmail.com<p>
+				<strong>PROFESSIONAL</strong><br>jonathan.alland • gmail.com</p>
+			</div>
+			
+			<div class="privacy-policy">
+				<strong>PRIVACY POLICY:</strong>
+				<p>This website does not collect any personal information because I do not want your personal information. Should I somehow collect your information unintentionally, I’m really sorry, and I’ll delete it as soon as I'm aware.</p>
+			</div>
+			
+			<div>
+				<p class="back-to-homepage"><a href="./">← <strong>Back to homepage</strong></a></p>
+				<p>Copyright © 2021 Jonathan Alland<br>
+				All rights reserved</p>
+			</div>
+
+		</div>
+	</footer>
+	
+</body>
+</html>
