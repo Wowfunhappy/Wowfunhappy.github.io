@@ -136,19 +136,32 @@ function calculateOffset(item) {
 }
 
 function handleTouches() {
+	
+	//https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
+	var supportsPassive = false;
+	try {
+		var opts = Object.defineProperty({}, 'passive', {
+			get: function() {
+				supportsPassive = true;
+			}
+		});
+		window.addEventListener("testPassive", null, opts);
+		window.removeEventListener("testPassive", null, opts);
+	} catch (e) {}
+	
 	var cards = document.getElementsByClassName("card");
 	for (var i = 0; i < cards.length; i++) {
 		cards[i].addEventListener("touchstart", function(e) {
 			this.classList.add("touchDown");
 			this.classList.remove("touchUp");
-		});
+		}, supportsPassive ? { passive: true } : false);
 		cards[i].addEventListener("touchend", function (e) {
 			this.classList.add("touchUp");
 			this.classList.remove("touchDown");
-		});
+		}, supportsPassive ? { passive: true } : false);
 		cards[i].addEventListener("click", function (e) {
 			//Keep card depressed if tapped
 			this.classList.remove("touchUp");
-		});
+		}, supportsPassive ? { passive: true } : false);
 	}
 }
