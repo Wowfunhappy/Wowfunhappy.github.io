@@ -46,9 +46,10 @@ function startMoveSets() {
 	patientMoveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
 		var timeBetween = moveSet.dataset.timeBetween || 200;
+		var reverse = moveSet.dataset.reverse || false;
 		var items = moveSet.getElementsByClassName("move-set-item");
 		window.setTimeout(function() {
-			patientSetMovedState(items, timeBetween);
+			patientSetMovedState(items, timeBetween, reverse);
 		}, delay);
 	});
 	
@@ -57,12 +58,13 @@ function startMoveSets() {
 	hastyMoveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
 		var timeBetween = moveSet.dataset.timeBetween || 200;
+		var reverse = moveSet.dataset.reverse || false;
 		var items = moveSet.getElementsByClassName("move-set-item");
 		window.setTimeout(function() {
 			var waypoint = new Waypoint({
 				element: moveSet,
 				handler: function() {
-					hastySetMovedState(items, timeBetween);
+					hastySetMovedState(items, timeBetween, reverse);
 				},
 				offset: function() { return calculateOffset(this); }
 			});
@@ -87,14 +89,15 @@ function startMoveSets() {
 	}
 }
 
-function patientSetMovedState(list, timeBetween) {
+function patientSetMovedState(list, timeBetween, reverse) {
 	if (list.length >= 1) {
+		console.log(reverse);
 		var waypoint = new Waypoint({
-			element: list[0],
+			element: list[reverse ? list.length - 1 : 0],
 			handler: function() {
 				this.element.classList.remove('move-set-item');
 				window.setTimeout(function() {
-					patientSetMovedState(list, timeBetween);
+					patientSetMovedState(list, timeBetween, reverse);
 				}, timeBetween);
 			},
 			offset: function() { return calculateOffset(this); }
@@ -102,11 +105,11 @@ function patientSetMovedState(list, timeBetween) {
 	}
 }
 
-function hastySetMovedState(list, timeBetween) {
+function hastySetMovedState(list, timeBetween, reverse) {
 	if (list.length >= 1) {
-		list[0].classList.remove('move-set-item');
+		list[reverse ? list.length - 1 : 0].classList.remove('move-set-item');
 		window.setTimeout(function() {
-			hastySetMovedState(list, timeBetween);
+			hastySetMovedState(list, timeBetween, reverse);
 		}, timeBetween);
 	}
 }
