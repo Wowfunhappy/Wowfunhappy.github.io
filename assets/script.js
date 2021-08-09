@@ -46,7 +46,7 @@ function startMoveSets() {
 	patientMoveSets.forEach(function(moveSet) {
 		var delay = moveSet.dataset.initialDelay || 0;
 		var timeBetween = moveSet.dataset.timeBetween || 200;
-		var reverse = moveSet.dataset.reverse || false;
+		var reverse = window.innerWidth >= 900 ? moveSet.dataset.reverse || false : false;
 		var items = moveSet.getElementsByClassName("move-set-item");
 		window.setTimeout(function() {
 			patientSetMovedState(items, timeBetween, reverse);
