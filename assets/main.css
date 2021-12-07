@@ -27,10 +27,6 @@
 	font-display: block;
 }
 
-*, *::before, *::after {
-	box-sizing: border-box;
-}
-
 .move-set-item {
 	display: block;
 }
@@ -42,6 +38,7 @@ body {
 	overflow-x: hidden;
 	font-size: 16px;
 	opacity: 0;
+	box-sizing: border-box;
 	-webkit-text-size-adjust: 100%; /*iOS orientation changes won't change font size.*/
 }
 
