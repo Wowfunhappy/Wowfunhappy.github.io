@@ -111,10 +111,3 @@
 	opacity: 0;
 	will-change: opacity;
 }
-
-@media (prefers-reduced-motion) {
-	* {
-		opacity: 1 !important;
-		animation: none !important;
-	}
-}
